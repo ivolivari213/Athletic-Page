@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/ligasbutton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Lista de Ligas con Directivos"
+        app:layout_constraintBottom_toTopOf="@+id/directivosbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/directivosbutton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Lista de directivos de una liga"
+        app:layout_constraintBottom_toTopOf="@+id/clubligabutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ligasbutton" />
+
+    <Button
+        android:id="@+id/clubligabutton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Clubes de una liga"
+        app:layout_constraintBottom_toTopOf="@+id/juezligabutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/directivosbutton" />
+
+    <Button
+        android:id="@+id/juezligabutton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Jueces de cada Liga"
+        app:layout_constraintBottom_toTopOf="@+id/entrenadoresclubbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clubligabutton" />
+
+    <Button
+        android:id="@+id/entrenadoresclubbutton"
+        android:layout_width="200dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="56dp"
+        android:text="Entrenadores de Cada club"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/juezligabutton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

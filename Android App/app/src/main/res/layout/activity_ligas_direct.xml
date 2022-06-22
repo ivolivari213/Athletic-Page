@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LigasDirect">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="224dp"
+        android:text="Nombre:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="145dp"
+
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/itemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="255dp"
+        android:layout_marginTop="6dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="222dp"
+        android:text="Posicion:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/posicionNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/itemName"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="39dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="249dp"
+        android:text="Liga:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignStart="@+id/posicionNombre"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="64dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="236dp"
+        android:text="Pueblo:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/puebloNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionNombre"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="90dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="195dp"
+        android:text="Registro Dpto:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionRegistroDptoEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/puebloNombre"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="114dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="133dp"
+        android:layout_marginEnd="195dp"
+        android:text="Telefono Liga:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionRegistroDptoEstado"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="136dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="158dp"
+        android:layout_marginEnd="195dp"
+        android:text="Direccion Fisica:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionDireccionFisica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionTelefono"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="160dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="183dp"
+        android:layout_marginEnd="195dp"
+        android:text="Direccion Postal:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionDireccionPostal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionDireccionFisica"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="185dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="194dp"
+        android:text="Email Liga:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionCorreoElectronico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionDireccionPostal"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="212dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="238dp"
+        android:layout_marginEnd="194dp"
+        android:text="Pagina Web:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizacionPaginaWeb"
+        android:autoLink="all"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionCorreoElectronico"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="238dp"
+        android:text="TextView" />
+
+    <TextView
+
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="271dp"
+        android:layout_marginEnd="194dp"
+        android:text="Reglamento:"
+        android:textStyle="bold" />
+
+    <TextView
+
+        android:id="@+id/organizacionReglamentoUrl"
+
+        android:autoLink="all"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/organizacionPaginaWeb"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="270dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>
