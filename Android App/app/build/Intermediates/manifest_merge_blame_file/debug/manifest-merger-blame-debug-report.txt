@@ -1,0 +1,71 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.project3"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="27"
+8-->D:\Documents\project3\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->D:\Documents\project3\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Documents\project3\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\Documents\project3\app\src\main\AndroidManifest.xml:5:22-64
+12
+13    <application
+13-->D:\Documents\project3\app\src\main\AndroidManifest.xml:7:5-31:19
+14        android:allowBackup="true"
+14-->D:\Documents\project3\app\src\main\AndroidManifest.xml:9:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.0.1] C:\Users\ioliv\.gradle\caches\transforms-2\files-2.1\c0a39027978b83a483a047f5c31d0c4e\core-1.0.1\AndroidManifest.xml:22:18-86
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->D:\Documents\project3\app\src\main\AndroidManifest.xml:10:9-43
+18        android:label="Athletic System"
+18-->D:\Documents\project3\app\src\main\AndroidManifest.xml:11:9-40
+19        android:roundIcon="@mipmap/ic_launcher_round"
+19-->D:\Documents\project3\app\src\main\AndroidManifest.xml:12:9-54
+20        android:supportsRtl="true"
+20-->D:\Documents\project3\app\src\main\AndroidManifest.xml:13:9-35
+21        android:testOnly="true"
+22        android:theme="@style/AppTheme"
+22-->D:\Documents\project3\app\src\main\AndroidManifest.xml:14:9-40
+23        android:usesCleartextTraffic="true" >
+23-->D:\Documents\project3\app\src\main\AndroidManifest.xml:8:9-44
+24        <activity
+24-->D:\Documents\project3\app\src\main\AndroidManifest.xml:16:9-24:20
+25            android:name="com.example.project3.MainActivity"
+25-->D:\Documents\project3\app\src\main\AndroidManifest.xml:17:13-41
+26            android:label="Athletic System" >
+26-->D:\Documents\project3\app\src\main\AndroidManifest.xml:18:13-44
+27            <intent-filter>
+27-->D:\Documents\project3\app\src\main\AndroidManifest.xml:19:13-23:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->D:\Documents\project3\app\src\main\AndroidManifest.xml:20:17-69
+28-->D:\Documents\project3\app\src\main\AndroidManifest.xml:20:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->D:\Documents\project3\app\src\main\AndroidManifest.xml:22:17-77
+30-->D:\Documents\project3\app\src\main\AndroidManifest.xml:22:27-74
+31            </intent-filter>
+32        </activity>
+33        <activity android:name="com.example.project3.LigasDirect" />
+33-->D:\Documents\project3\app\src\main\AndroidManifest.xml:25:9-49
+33-->D:\Documents\project3\app\src\main\AndroidManifest.xml:25:19-46
+34        <activity android:name="com.example.project3.juezLiga" />
+34-->D:\Documents\project3\app\src\main\AndroidManifest.xml:26:9-46
+34-->D:\Documents\project3\app\src\main\AndroidManifest.xml:26:19-43
+35        <activity android:name="com.example.project3.clubEntrenador" />
+35-->D:\Documents\project3\app\src\main\AndroidManifest.xml:27:9-52
+35-->D:\Documents\project3\app\src\main\AndroidManifest.xml:27:19-49
+36        <activity android:name="com.example.project3.LigasByDirect" />
+36-->D:\Documents\project3\app\src\main\AndroidManifest.xml:28:9-51
+36-->D:\Documents\project3\app\src\main\AndroidManifest.xml:28:19-48
+37        <activity android:name="com.example.project3.clubLiga" />
+37-->D:\Documents\project3\app\src\main\AndroidManifest.xml:29:9-46
+37-->D:\Documents\project3\app\src\main\AndroidManifest.xml:29:19-43
+38    </application>
+39
+40</manifest>
