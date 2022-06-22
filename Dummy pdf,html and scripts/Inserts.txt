@@ -1,0 +1,186 @@
+INSERT INTO role value ("rol1", "administrator", "administrator");
+INSERT INTO role value ("rol2", "jueces/entrenador", "jueces/entrenador");
+INSERT INTO role value ("rol3", "student", "student");
+
+INSERT INTO roleusergood value ("user1", "rol1", "2019/10/31");
+
+Insert into menuElement values (1, "Users", "User management");
+Insert into menuElement values (2, "General", "General operations");
+Insert into menuElement values (3, "Help", "Technical support");
+Insert into menuElement values (0, "General pages", "General pages");
+
+Insert into webPageGood values ("Menu.jsp", "Menu", " the menu page", 0);
+Insert into webPageGood values ("login.jsp", "Validation", " the validation page", 0);
+Insert into webPageGood values ("seleccionOrg.html", "organizaciones  ", " Add organizacion a las Ligas/Club/organismo afiliado", 0);
+
+Insert into webPageGood values ("seleccionPer.html", " Agregar personas que no sean atletas ", " Personas que no son atletas", 0);
+Insert into webPageGood values ("categoria.html", " Agregar Categoria y Eventos ", " Categoria y Eventos", 0);
+Insert into webPageGood values ("Competencia.jsp", " Agregar Competencia ", " Agregar una competencia a un evento", 0);
+Insert into webPageGood values ("atleta.jsp", "Agregar Atleta ", " Agregar Atletas", 0);
+Insert into webPageGood values ("atletaCompetencia.jsp", "Agregar Competencia a un Atleta", " Competencias de los Atletas", 0);
+Insert into webPageGood values ("certificadomedico.jsp", "Agregar Certificado Medico de un Atleta", " Certificado Medico de un Atleta", 0);
+Insert into webPageGood values ("planentrenamiento.jsp", "Agregar plan de entrenamiento", " Agregar Plan de entrenamiento de un Atleta", 0);
+Insert into webPageGood values ("atletaEntrenador.jsp", "Agregar Entrenador a un Atleta", " Entrenador de un Atleta", 0);
+Insert into webPageGood values ("entrenamiento.jsp", "Agregar Los entrenamientos", " Entrenamientos ", 0);
+Insert into webPageGood values ("Vestimenta.jsp", "Agregar la Vestimenta", " Vestimenta de atleta ", 0);
+Insert into webPageGood values ("personaUpdateEntrenadorJuez.jsp", "Update de Liscencias", " Actualizar Liscencias de Jueces y Entrenador ", 0);
+Insert into webPageGood values ("competenciaEventoEx.jsp", "Update Competencia", " Agregar Competencias a Eventos existentes ", 0);
+Insert into webPageGood values ("ligasDirect.jsp", "Ver directivos de las Ligas", " Ver Directivos de cada Liga ", 0);
+Insert into webPageGood values ("listDirectivos.jsp", "Ver directivos para una liga", " Ver Directivos para una liga en particular ", 0);
+Insert into webPageGood values ("listClub.jsp", "Ver los clubes de una lista", " Ver los clubes de una liga en particular ", 0);
+Insert into webPageGood values ("listJueces.jsp", "Ver los Jueces de cada Liga", " Ver los Jueces de cada liga con su liscencia vigente ", 0);
+Insert into webPageGood values ("listEntrenadores.jsp", "Ver los Entrenadores de cada club", " Ver los Entrenadores de cada club con su liscencia vigente ", 0);
+Insert into webPageGood values ("listAtletaClub.jsp", "Ver los Atletas de cada club", " Ver los Atletas de cada club ", 0);
+Insert into webPageGood values ("listAtletaeventos.jsp", "Ver Eventos de un Atleta", " Ver los Eventos que compite un Atleta ", 0);
+Insert into webPageGood values ("listAtletaCompetencia.jsp", "Ver Competencias de un Atleta", " Ver los Competencias de un Atleta ", 0);
+Insert into webPageGood values ("historialjueces.jsp", "Historial de licencia de un juez", " Ver las licencias que ha tenido un juez ", 0);
+Insert into webPageGood values ("historialentrenador.jsp", "Historial de licencia de un entrenador", " Ver las licencias que ha tenido un entrenador ", 0);
+Insert into webPageGood values ("listEntrenadorAtleta.jsp", "Atletas asignados a un entrenador", " Atletas Asignados a un Entrenador ", 0);
+Insert into webPageGood values ("listAtletaByEntrenador.jsp", "Entrenador asignado a un atleta", " Entrenadores Asignados a un Atleta ", 0);
+
+
+
+
+Insert into webPageprevious values ("Menu.jsp", "login.jsp");
+Insert into webPageprevious values ("seleccionOrg.html", "Menu.jsp");
+
+
+Insert into webPageprevious values ("categoria.html", "Menu.jsp");
+Insert into webPageprevious values ("Competencia.jsp", "Menu.jsp");
+Insert into webPageprevious values ("atleta.jsp", "Menu.jsp");
+Insert into webPageprevious values ("atletaCompetencia.jsp", "Menu.jsp");
+Insert into webPageprevious values ("certificadomedico.jsp", "Menu.jsp");
+Insert into webPageprevious values ("planentrenamiento.jsp", "Menu.jsp");
+Insert into webPageprevious values ("atletaEntrenador.jsp", "Menu.jsp");
+Insert into webPageprevious values ("entrenamiento.jsp", "Menu.jsp");
+Insert into webPageprevious values ("Vestimenta.jsp", "Menu.jsp");
+Insert into webPageprevious values ("personaUpdateEntrenadorJuez.jsp", "Menu.jsp");
+Insert into webPageprevious values ("competenciaEventoEx.jsp", "Menu.jsp");
+Insert into webPageprevious values ("ligasDirect.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listDirectivos.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listClub.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listJueces.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listEntrenadores.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listAtletaClub.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listAtletaeventos.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listAtletaCompetencia.jsp", "Menu.jsp");
+Insert into webPageprevious values ("historialjueces.jsp", "Menu.jsp");
+Insert into webPageprevious values ("historialentrenador.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listEntrenadorAtleta.jsp", "Menu.jsp");
+Insert into webPageprevious values ("listAtletaByEntrenador.jsp", "Menu.jsp");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Insert into roleWebPagegood values ("rol1", "Menu.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "seleccionOrg.html", "2019/10/31");
+
+
+Insert into roleWebPagegood values ("rol1", "seleccionPer.html", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "categoria.html", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "Competencia.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "atleta.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "atletaCompetencia.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "certificadomedico.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "planentrenamiento.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "atletaEntrenador.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "entrenamiento.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "Vestimenta.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "personaUpdateEntrenadorJuez.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "competenciaEventoEx.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "ligasDirect.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listDirectivos.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listClub.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listJueces.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listEntrenadores.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listAtletaClub.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listAtletaeventos.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listAtletaCompetencia.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "historialjueces.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "historialentrenador.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listEntrenadorAtleta.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol1", "listAtletaByEntrenador.jsp", "2019/10/31");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Insert into roleWebPagegood values ("rol2", "Menu.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "ligasDirect.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listDirectivos.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listClub.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listJueces.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listEntrenadores.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listAtletaClub.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listAtletaeventos.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listAtletaCompetencia.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "historialjueces.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "historialentrenador.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listEntrenadorAtleta.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol2", "listAtletaByEntrenador.jsp", "2019/10/31");
+
+
+
+Insert into roleWebPagegood values ("rol3", "Menu.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "ligasDirect.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listDirectivos.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listClub.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listJueces.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listEntrenadores.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listAtletaClub.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listAtletaeventos.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listAtletaCompetencia.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "historialjueces.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "historialentrenador.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listEntrenadorAtleta.jsp", "2019/10/31");
+Insert into roleWebPagegood values ("rol3", "listAtletaByEntrenador.jsp", "2019/10/31");
+
+INSERT INTO organizacionTipo values (1, "liga", "Organizacion de deporte");
+INSERT INTO organizacionTipo values (2, "club", "Organizacion de personas");
+INSERT INTO organizacionTipo values (3, "organismo afiliado", "Informacion de agrupaciones");
+
+Insert INTO licencia(licenciaNombre,licenciaDescripcion) values(1,'Licencia Internacional');
+Insert INTO licencia (licenciaNombre,licenciaDescripcion)  values (2,'Licencia Nacional');
+Insert INTO licencia (licenciaNombre,licenciaDescripcion) values (3,'Licencia Municipal');
+
+INSERT INTO posicion (posicionNombre) values ('Presidente');
+INSERT INTO posicion (posicionNombre) values ('Oficial');
+INSERT INTO posicion (posicionNombre)values ('Entrenador');
+INSERT INTO posicion (posicionNombre) values ('Juez');
+INSERT INTO posicion (posicionNombre) values ('Director');
+
+
+INSERT INTO nivelLicencia (licencia_licenciaId,nivelLicenciaNombre,nivelLicenciaDescripcion) values (1,'Internacional','Nivel Internacional');
+INSERT INTO nivelLicencia (licencia_licenciaId,nivelLicenciaNombre,nivelLicenciaDescripcion) values (2,'Nacional','Nivel Nacional');
+INSERT INTO nivelLicencia (licencia_licenciaId,nivelLicenciaNombre,nivelLicenciaDescripcion) values (3,'Municipal','Nivel Municipal');
+
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (1,'zapatillas');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (2,'sudadera');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (3,'pantalon');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (4,'tenias');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (5,'ganchos');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (6,'headband');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (7,'camiseta');
+INSERT INTO vestimenta (tipoVestimenta,descripcionVestimenta) values (8,'canilleras');

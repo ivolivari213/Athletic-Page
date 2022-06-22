@@ -1,0 +1,333 @@
+CREATE TABLE Atleta (
+  atletaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  atletaNombre VARCHAR(50) NULL,
+  atletaSegundoNombre VARCHAR(50) NULL,
+  atletaApellidos VARCHAR(50) NULL,
+  atletaFechaNacimiento DATE,
+  atletaGenero CHAR NULL,
+  atletaCorreoElectronico VARCHAR(50) NULL,
+  atletaDireccionPostal TEXT NOT NULL,
+  atletaTelefonos VARCHAR(50) NULL,
+  atletaPasaporteNumero VARCHAR(50) NULL,
+  atletaPasaporteVencimiento DATE NULL,
+  atletaNombreEncargado VARCHAR(50) NULL,
+  atletaCompromisoEticoUrl VARCHAR(50) NULL,
+  atletaPoliticaConductaUrl VARCHAR(50) NULL,
+  PRIMARY KEY(atletaId)
+);
+
+CREATE TABLE atletaCertificadoMedico (
+  atletaCertificadoMedicoId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  atletaCertificadoMedicoURL VARCHAR(50) NULL,
+  atletaCertificadoMedicoFecha DATE NULL,
+  PRIMARY KEY(atletaCertificadoMedicoId),
+  INDEX atletaCertificadoMedico_FKIndex1(Atleta_atletaId)
+);
+
+CREATE TABLE licencia (
+  licenciaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  licenciaNombre INTEGER UNSIGNED NULL,
+  licenciaDescripcion TEXT NULL,
+  PRIMARY KEY(licenciaId)
+);
+
+CREATE TABLE nivelLicencia (
+  nivelLicenciaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  licencia_licenciaId INTEGER UNSIGNED NOT NULL,
+  nivelLicenciaNombre VARCHAR(50) NULL,
+  nivelLicenciaDescripcion TEXT NULL,
+  PRIMARY KEY(nivelLicenciaId),
+  INDEX nivelLicencia_FKIndex1(licencia_licenciaId)
+);
+
+
+CREATE TABLE organizacionTipo (
+  organizacionTipoID INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  organizacionTipoNombre VARCHAR(50) NULL,
+  organizacionTipoDescripcion TEXT NULL,
+  PRIMARY KEY(organizacionTipoID)
+);
+
+CREATE TABLE persona (
+  personaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  personaNombres VARCHAR(50) NULL,
+  personaApellidos VARCHAR(50) NULL,
+  personaFechaNacimiento DATE NULL,
+  personaCorreoElectronico VARCHAR(50) NULL,
+  personaDireccionFisica TEXT NULL,
+  personaDireccionPostal TEXT NULL,
+  personaPasaporte VARCHAR(50) NULL,
+  personaPasaporteExpiracion VARCHAR(50) NULL,
+  PRIMARY KEY(personaId)
+);
+
+
+CREATE TABLE organizacion (
+  lorganizacionD INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Pueblo_idPueblo INTEGER UNSIGNED NOT NULL,
+  organizacionTipo_organizacionTipoID INTEGER UNSIGNED NOT NULL,
+  organizacionNombre VARCHAR(50) NULL,
+  organizacionRegistroDptoEstado VARCHAR(50) NULL,
+  organizacionTelefono VARCHAR(50) NULL,
+  organizacionDireccionFisica TEXT NULL,
+  organizacionCorreoElectronico VARCHAR(50) NULL,
+  organizacionPaginaWeb VARCHAR(50) NULL,
+  organizacionDireccionPostal TEXT NULL,
+  organizacionReglamentoUrl VARCHAR(50) NULL,
+  PRIMARY KEY(lorganizacionD),
+  INDEX organizacion_FKIndex1(organizacionTipo_organizacionTipoID),
+  INDEX organizacion_FKIndex3(Pueblo_idPueblo)
+);
+
+
+
+CREATE TABLE posicion (
+  posicionId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  posicionNombre VARCHAR(50) NULL,
+  PRIMARY KEY(posicionId)
+);
+
+CREATE TABLE Pueblo (
+  idPueblo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  puebloNombre VARCHAR(50) NULL,
+  PRIMARY KEY(idPueblo)
+);
+
+CREATE TABLE vestimenta (
+  idVestimenta INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  tipoVestimenta INTEGER UNSIGNED NULL,
+  descripcionVestimenta VARCHAR(50) NULL,
+  PRIMARY KEY(idVestimenta)
+);
+
+CREATE TABLE categoria (
+  categoriaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  categoriaNombre VARCHAR(50) NULL,
+  cateroriaDescripcion TEXT NULL,
+  PRIMARY KEY(categoriaId)
+);
+
+
+CREATE TABLE evento (
+  eventoId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  eventoNombre VARCHAR(50) NULL,
+  eventoDescripcion TEXT NULL,
+  categoria_categoriaId INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(eventoId),
+  INDEX evento_FKIndex1(categoria_categoriaId)
+);
+
+CREATE TABLE clubLiga (
+  clubLigaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  organizacion_lorganizacionLiga INTEGER UNSIGNED NOT NULL,
+  organizacion_lorganizacionClub INTEGER UNSIGNED NOT NULL,
+  clubLigaFechaInicio DATE NULL,
+  clubLigaFechaFin DATE NULL,
+  organizacion_ligaID INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(clubLigaId),
+  INDEX clubLiga_FKIndex1(organizacion_lorganizacionLiga),
+  INDEX clubLiga_FKIndex2(organizacion_lorganizacionClub)
+);
+
+CREATE TABLE competencia (
+  competenciaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  organizacion_lorganizacionD INTEGER UNSIGNED NOT NULL,
+  competenciaNombre VARCHAR(50) NULL,
+  competenciaFecha DATETIME NULL,
+  competenciaLugar TEXT NULL,
+  PRIMARY KEY(competenciaId),
+  INDEX competencia_FKIndex2(organizacion_lorganizacionD)
+);
+
+
+
+CREATE TABLE atletaCompetencia (
+  atletaCompetenciaId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  competenciaEventos_competenciaEventosId INTEGER UNSIGNED NOT NULL,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  atletaCompetenciaResult FLOAT NULL,
+  atletaCompetenciaPosicion INT NULL,
+  PRIMARY KEY(atletaCompetenciaId),
+  INDEX atletaCompetencia_FKIndex1(Atleta_atletaId),
+  INDEX atletaCompetencia_FKIndex2(competenciaEventos_competenciaEventosId)
+);
+
+CREATE TABLE atletaEntrenador (
+  idatletaEntrenador INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  persona_personaId INTEGER UNSIGNED NOT NULL,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  fechaInicio DATE NULL,
+  fechaFin DATE NULL,
+  PRIMARY KEY(idatletaEntrenador),
+  INDEX atletaEntrenador_FKIndex1(Atleta_atletaId),
+  INDEX atletaEntrenador_FKIndex2(persona_personaId)
+);
+
+CREATE TABLE AtletaPueblo (
+  idAtletaPueblo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  Pueblo_idPueblo INTEGER UNSIGNED NOT NULL,
+  atletaPuebloDireccion VARCHAR(50) NULL,
+  fecha DATE NULL,
+  PRIMARY KEY(idAtletaPueblo),
+  INDEX AtletaPueblo_FKIndex1(Atleta_atletaId),
+  INDEX AtletaPueblo_FKIndex2(Pueblo_idPueblo)
+);
+
+CREATE TABLE atletaVestimenta (
+  idatletaVestimenta INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  vestimenta_idVestimenta INTEGER UNSIGNED NOT NULL,
+  fecha DATE NULL,
+  PRIMARY KEY(idatletaVestimenta),
+  INDEX atletaVestimenta_FKIndex1(Atleta_atletaId),
+  INDEX atletaVestimenta_FKIndex2(vestimenta_idVestimenta)
+);
+
+CREATE TABLE Atleta_has_organizacion (
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  organizacion_lorganizacionD INTEGER UNSIGNED NOT NULL,
+  fechaInicial DATE NULL,
+  fechaFinal DATE NULL,
+  PRIMARY KEY(Atleta_atletaId, organizacion_lorganizacionD),
+  INDEX Atleta_has_organizacion_FKIndex1(Atleta_atletaId),
+  INDEX Atleta_has_organizacion_FKIndex2(organizacion_lorganizacionD)
+);
+
+
+
+CREATE TABLE competenciaEventos (
+  competenciaEventosId INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  competencia_competenciaId INTEGER UNSIGNED NOT NULL,
+  evento_eventoId INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(competenciaEventosId),
+  INDEX competenciaEventos_FKIndex1(evento_eventoId),
+  INDEX competenciaEventos_FKIndex2(competencia_competenciaId)
+);
+
+CREATE TABLE Entrenamiento (
+  idEntrenamiento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  Pueblo_idPueblo INTEGER UNSIGNED NOT NULL,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  entrenamientoLugar VARCHAR(50) NULL,
+  entrenamientoFecha DATETIME NULL,
+  comentarios TEXT NULL,
+  PRIMARY KEY(idEntrenamiento),
+  INDEX Entrenamiento_FKIndex1(Atleta_atletaId),
+  INDEX Entrenamiento_FKIndex2(Pueblo_idPueblo)
+);
+
+
+
+CREATE TABLE organizacionPersona (
+  organizacion_lorganizacionD INTEGER UNSIGNED NOT NULL,
+  persona_personaId INTEGER UNSIGNED NOT NULL,
+  posicion_posicionId INTEGER UNSIGNED NOT NULL,
+  fechaInicio DATE NULL,
+  fechaFinal DATE NULL,
+  PRIMARY KEY(organizacion_lorganizacionD, persona_personaId),
+  INDEX organizacion_has_Usuario_FKIndex1(organizacion_lorganizacionD),
+  INDEX organizacion_has_Usuario_FKIndex2(persona_personaId),
+  INDEX organizacion_has_Usuario_FKIndex3(posicion_posicionId)
+);
+
+
+CREATE TABLE personaNivelLicencia (
+  nivelLicencia_nivelLicenciaId INTEGER UNSIGNED NOT NULL,
+  persona_personaId INTEGER UNSIGNED NOT NULL,
+  fechaInicio DATE NULL,
+  fechaExpiracion DATE NULL,
+  INDEX Entrenador_has_nivelLicencia_FKIndex2(nivelLicencia_nivelLicenciaId),
+  INDEX Persona_has_nivelLicencia_FKIndex2(persona_personaId)
+);
+
+CREATE TABLE planDeEntrenamiento (
+  idplanDeEntrenamiento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  persona_personaId INTEGER UNSIGNED NOT NULL,
+  Atleta_atletaId INTEGER UNSIGNED NOT NULL,
+  fechaPlanEntrenamiento DATE NULL,
+  urlPlanEntrenamiento VARCHAR(50) NULL,
+  PRIMARY KEY(idplanDeEntrenamiento),
+  INDEX planDeEntrenamiento_FKIndex1(Atleta_atletaId),
+  INDEX planDeEntrenamiento_FKIndex2(persona_personaId)
+);
+
+INSERT INTO pueblo (puebloNombre) values ('Adjuntas');
+INSERT INTO pueblo (puebloNombre) values ('Aguada');
+INSERT INTO pueblo (puebloNombre) values ('Aguadilla');
+INSERT INTO pueblo (puebloNombre) values ('Aguas Buenas');
+INSERT INTO pueblo (puebloNombre) values ('Aibonito');
+INSERT INTO pueblo (puebloNombre) values ('Arecibo');
+INSERT INTO pueblo (puebloNombre) values ('Arroyo');
+INSERT INTO pueblo (puebloNombre) values ('Anasco');
+INSERT INTO pueblo (puebloNombre) values ('Barceloneta');
+INSERT INTO pueblo (puebloNombre) values ('Barranquitas');
+INSERT INTO pueblo (puebloNombre) values ('Bayamon');
+INSERT INTO pueblo (puebloNombre) values ('Cabo Rojo');
+INSERT INTO pueblo (puebloNombre) values ('Caguas');
+INSERT INTO pueblo (puebloNombre) values ('Camuy');
+INSERT INTO pueblo (puebloNombre) values ('Canovanas');
+INSERT INTO pueblo (puebloNombre) values ('Carolina');
+INSERT INTO pueblo (puebloNombre) values ('Catano');
+INSERT INTO pueblo (puebloNombre) values ('Cayey');
+INSERT INTO pueblo (puebloNombre) values ('Ceiba');
+INSERT INTO pueblo (puebloNombre) values ('Ciales');
+INSERT INTO pueblo (puebloNombre) values ('Cidra');
+INSERT INTO pueblo (puebloNombre) values ('Coamo');
+INSERT INTO pueblo (puebloNombre) values ('Comerio');
+INSERT INTO pueblo (puebloNombre) values ('Corozal');
+INSERT INTO pueblo (puebloNombre) values ('Culebra');
+INSERT INTO pueblo (puebloNombre) values ('Dorado');
+INSERT INTO pueblo (puebloNombre) values ('Fajardo');
+INSERT INTO pueblo (puebloNombre) values ('Florida');
+INSERT INTO pueblo (puebloNombre) values ('Guayama');
+INSERT INTO pueblo (puebloNombre) values ('Guayanilla');
+INSERT INTO pueblo (puebloNombre) values ('Guaynabo');
+INSERT INTO pueblo (puebloNombre) values ('Gurabo');
+INSERT INTO pueblo (puebloNombre) values ('Guanica');
+INSERT INTO pueblo (puebloNombre) values ('Hatillo');
+INSERT INTO pueblo (puebloNombre) values ('Hormigueros');
+INSERT INTO pueblo (puebloNombre) values ('Humacao');
+INSERT INTO pueblo (puebloNombre) values ('Isabela');
+INSERT INTO pueblo (puebloNombre) values ('Jayuya');
+INSERT INTO pueblo (puebloNombre) values ('Juana Diaz');
+INSERT INTO pueblo (puebloNombre) values ('Juncos');
+INSERT INTO pueblo (puebloNombre) values ('Lajas');
+INSERT INTO pueblo (puebloNombre) values ('Lares');
+INSERT INTO pueblo (puebloNombre) values ('Las Marias');
+INSERT INTO pueblo (puebloNombre) values ('Las Piedras');
+INSERT INTO pueblo (puebloNombre) values ('Loiza');
+INSERT INTO pueblo (puebloNombre) values ('Luquillo');
+INSERT INTO pueblo (puebloNombre) values ('Manati');
+INSERT INTO pueblo (puebloNombre) values ('Maricao');
+INSERT INTO pueblo (puebloNombre) values ('Maunabo');
+INSERT INTO pueblo (puebloNombre) values ('Mayaguez');
+INSERT INTO pueblo (puebloNombre) values ('Moca');
+INSERT INTO pueblo (puebloNombre) values ('Morovis');
+INSERT INTO pueblo (puebloNombre) values ('Naguabo');
+INSERT INTO pueblo (puebloNombre) values ('Naranjito');
+INSERT INTO pueblo (puebloNombre) values ('Orocovis');
+INSERT INTO pueblo (puebloNombre) values ('Patillas');
+INSERT INTO pueblo (puebloNombre) values ('Penuelas');
+INSERT INTO pueblo (puebloNombre) values ('Ponce');
+INSERT INTO pueblo (puebloNombre) values ('Quebradillas');
+INSERT INTO pueblo (puebloNombre) values ('Rincon');
+INSERT INTO pueblo (puebloNombre) values ('Rio Grande');
+INSERT INTO pueblo (puebloNombre) values ('Sabana Grande');
+INSERT INTO pueblo (puebloNombre) values ('Salinas');
+INSERT INTO pueblo (puebloNombre) values ('San German');
+INSERT INTO pueblo (puebloNombre) values ('San Juan');
+INSERT INTO pueblo (puebloNombre) values ('San Lorenzo');
+INSERT INTO pueblo (puebloNombre) values ('San Sebastian');
+INSERT INTO pueblo (puebloNombre) values ('Santa Isabel');
+INSERT INTO pueblo (puebloNombre) values ('Toa Alta');
+INSERT INTO pueblo (puebloNombre) values ('Toa Baja');
+INSERT INTO pueblo (puebloNombre) values ('Trujillo Alto');
+INSERT INTO pueblo (puebloNombre) values ('Utuado');
+INSERT INTO pueblo (puebloNombre) values ('Vega Alta');
+INSERT INTO pueblo (puebloNombre) values ('Vega Baja');
+INSERT INTO pueblo (puebloNombre) values ('Vieques');
+INSERT INTO pueblo (puebloNombre) values ('Villalba');
+INSERT INTO pueblo (puebloNombre) values ('Yabucoa');
+INSERT INTO pueblo (puebloNombre) values ('Yauco');

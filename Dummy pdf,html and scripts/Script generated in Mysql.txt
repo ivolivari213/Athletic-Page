@@ -1,0 +1,542 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema proyecto2
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema proyecto2
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `proyecto2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `proyecto2` ;
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atleta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atleta` (
+  `atletaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `atletaNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaSegundoNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaApellidos` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaFechaNacimiento` DATE NULL DEFAULT NULL,
+  `atletaGenero` CHAR(1) NULL DEFAULT NULL,
+  `atletaCorreoElectronico` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaDireccionPostal` TEXT NOT NULL,
+  `atletaTelefonos` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaPasaporteNumero` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaPasaporteVencimiento` DATE NULL DEFAULT NULL,
+  `atletaNombreEncargado` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaCompromisoEticoUrl` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaPoliticaConductaUrl` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`atletaId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atleta_has_organizacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atleta_has_organizacion` (
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `organizacion_lorganizacionD` INT(10) UNSIGNED NOT NULL,
+  `fechaInicial` DATE NULL DEFAULT NULL,
+  `fechaFinal` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`Atleta_atletaId`, `organizacion_lorganizacionD`),
+  INDEX `Atleta_has_organizacion_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `Atleta_has_organizacion_FKIndex2` (`organizacion_lorganizacionD` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atletacertificadomedico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atletacertificadomedico` (
+  `atletaCertificadoMedicoId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `atletaCertificadoMedicoURL` VARCHAR(50) NULL DEFAULT NULL,
+  `atletaCertificadoMedicoFecha` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`atletaCertificadoMedicoId`),
+  INDEX `atletaCertificadoMedico_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atletacompetencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atletacompetencia` (
+  `atletaCompetenciaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `competenciaEventos_competenciaEventosId` INT(10) UNSIGNED NOT NULL,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `atletaCompetenciaResult` FLOAT NULL DEFAULT NULL,
+  `atletaCompetenciaPosicion` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`atletaCompetenciaId`),
+  INDEX `atletaCompetencia_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `atletaCompetencia_FKIndex2` (`competenciaEventos_competenciaEventosId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atletaentrenador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atletaentrenador` (
+  `idatletaEntrenador` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `persona_personaId` INT(10) UNSIGNED NOT NULL,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `fechaInicio` DATE NULL DEFAULT NULL,
+  `fechaFin` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`idatletaEntrenador`),
+  INDEX `atletaEntrenador_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `atletaEntrenador_FKIndex2` (`persona_personaId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atletapueblo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atletapueblo` (
+  `idAtletaPueblo` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `Pueblo_idPueblo` INT(10) UNSIGNED NOT NULL,
+  `atletaPuebloDireccion` VARCHAR(50) NULL DEFAULT NULL,
+  `fecha` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`idAtletaPueblo`),
+  INDEX `AtletaPueblo_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `AtletaPueblo_FKIndex2` (`Pueblo_idPueblo` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`atletavestimenta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`atletavestimenta` (
+  `idatletaVestimenta` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `vestimenta_idVestimenta` INT(10) UNSIGNED NOT NULL,
+  `fecha` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`idatletaVestimenta`),
+  INDEX `atletaVestimenta_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `atletaVestimenta_FKIndex2` (`vestimenta_idVestimenta` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`categoria`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`categoria` (
+  `categoriaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `categoriaNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `cateroriaDescripcion` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`categoriaId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`clubliga`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`clubliga` (
+  `clubLigaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `organizacion_lorganizacionLiga` INT(10) UNSIGNED NOT NULL,
+  `organizacion_lorganizacionClub` INT(10) UNSIGNED NOT NULL,
+  `clubLigaFechaInicio` DATE NULL DEFAULT NULL,
+  `clubLigaFechaFin` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`clubLigaId`),
+  INDEX `clubLiga_FKIndex1` (`organizacion_lorganizacionLiga` ASC) VISIBLE,
+  INDEX `clubLiga_FKIndex2` (`organizacion_lorganizacionClub` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`competencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`competencia` (
+  `competenciaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `organizacion_lorganizacionD` INT(10) UNSIGNED NOT NULL,
+  `competenciaNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `competenciaFecha` DATETIME NULL DEFAULT NULL,
+  `competenciaLugar` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`competenciaId`),
+  INDEX `competencia_FKIndex2` (`organizacion_lorganizacionD` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`competenciaeventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`competenciaeventos` (
+  `competenciaEventosId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `competencia_competenciaId` INT(10) UNSIGNED NOT NULL,
+  `evento_eventoId` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`competenciaEventosId`),
+  INDEX `competenciaEventos_FKIndex1` (`evento_eventoId` ASC) VISIBLE,
+  INDEX `competenciaEventos_FKIndex2` (`competencia_competenciaId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`entrenamiento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`entrenamiento` (
+  `idEntrenamiento` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Pueblo_idPueblo` INT(10) UNSIGNED NOT NULL,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `entrenamientoLugar` VARCHAR(50) NULL DEFAULT NULL,
+  `entrenamientoFecha` DATETIME NULL DEFAULT NULL,
+  `comentarios` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`idEntrenamiento`),
+  INDEX `Entrenamiento_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `Entrenamiento_FKIndex2` (`Pueblo_idPueblo` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`evento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`evento` (
+  `eventoId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `eventoNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `eventoDescripcion` TEXT NULL DEFAULT NULL,
+  `categoria_categoriaId` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`eventoId`),
+  INDEX `evento_FKIndex1` (`categoria_categoriaId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`licencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`licencia` (
+  `licenciaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `licenciaNombre` INT(10) UNSIGNED NULL DEFAULT NULL,
+  `licenciaDescripcion` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`licenciaId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`menuelement`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`menuelement` (
+  `menuID` DECIMAL(10,0) NOT NULL,
+  `title` VARCHAR(40) NOT NULL,
+  `Description` MEDIUMTEXT NOT NULL,
+  PRIMARY KEY (`menuID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`nivellicencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`nivellicencia` (
+  `nivelLicenciaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `licencia_licenciaId` INT(10) UNSIGNED NOT NULL,
+  `nivelLicenciaNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `nivelLicenciaDescripcion` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`nivelLicenciaId`),
+  INDEX `nivelLicencia_FKIndex1` (`licencia_licenciaId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`organizacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`organizacion` (
+  `lorganizacionD` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Pueblo_idPueblo` INT(10) UNSIGNED NOT NULL,
+  `organizacionTipo_organizacionTipoID` INT(10) UNSIGNED NOT NULL,
+  `organizacionNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `organizacionRegistroDptoEstado` VARCHAR(50) NULL DEFAULT NULL,
+  `organizacionTelefono` VARCHAR(50) NULL DEFAULT NULL,
+  `organizacionDireccionFisica` TEXT NULL DEFAULT NULL,
+  `organizacionCorreoElectronico` VARCHAR(50) NULL DEFAULT NULL,
+  `organizacionPaginaWeb` VARCHAR(50) NULL DEFAULT NULL,
+  `organizacionDireccionPostal` TEXT NULL DEFAULT NULL,
+  `organizacionReglamentoUrl` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`lorganizacionD`),
+  INDEX `organizacion_FKIndex1` (`organizacionTipo_organizacionTipoID` ASC) VISIBLE,
+  INDEX `organizacion_FKIndex3` (`Pueblo_idPueblo` ASC) INVISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`organizacionpersona`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`organizacionpersona` (
+  `organizacion_lorganizacionD` INT(10) UNSIGNED NOT NULL,
+  `persona_personaId` INT(10) UNSIGNED NOT NULL,
+  `posicion_posicionId` INT(10) UNSIGNED NOT NULL,
+  `fechaInicio` DATE NULL DEFAULT NULL,
+  `fechaFinal` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`organizacion_lorganizacionD`, `persona_personaId`),
+  INDEX `organizacion_has_Usuario_FKIndex1` (`organizacion_lorganizacionD` ASC) VISIBLE,
+  INDEX `organizacion_has_Usuario_FKIndex2` (`persona_personaId` ASC) VISIBLE,
+  INDEX `organizacion_has_Usuario_FKIndex3` (`posicion_posicionId` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`organizaciontipo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`organizaciontipo` (
+  `organizacionTipoID` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `organizacionTipoNombre` VARCHAR(50) NULL DEFAULT NULL,
+  `organizacionTipoDescripcion` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`organizacionTipoID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`persona`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`persona` (
+  `personaId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `personaNombres` VARCHAR(50) NULL DEFAULT NULL,
+  `personaApellidos` VARCHAR(50) NULL DEFAULT NULL,
+  `personaFechaNacimiento` DATE NULL DEFAULT NULL,
+  `personaCorreoElectronico` VARCHAR(50) NULL DEFAULT NULL,
+  `personaDireccionFisica` TEXT NULL DEFAULT NULL,
+  `personaDireccionPostal` TEXT NULL DEFAULT NULL,
+  `personaPasaporte` VARCHAR(50) NULL DEFAULT NULL,
+  `personaPasaporteExpiracion` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`personaId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`personanivellicencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`personanivellicencia` (
+  `nivelLicencia_nivelLicenciaId` INT(10) UNSIGNED NOT NULL,
+  `persona_personaId` INT(10) UNSIGNED NOT NULL,
+  `fechaInicio` DATE NULL DEFAULT NULL,
+  `fechaExpiracion` DATE NULL DEFAULT NULL,
+  INDEX `Entrenador_has_nivelLicencia_FKIndex2` (`nivelLicencia_nivelLicenciaId` ASC) VISIBLE,
+  INDEX `Persona_has_nivelLicencia_FKIndex2` (`persona_personaId` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`plandeentrenamiento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`plandeentrenamiento` (
+  `idplanDeEntrenamiento` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `persona_personaId` INT(10) UNSIGNED NOT NULL,
+  `Atleta_atletaId` INT(10) UNSIGNED NOT NULL,
+  `fechaPlanEntrenamiento` DATE NULL DEFAULT NULL,
+  `urlPlanEntrenamiento` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`idplanDeEntrenamiento`),
+  INDEX `planDeEntrenamiento_FKIndex1` (`Atleta_atletaId` ASC) VISIBLE,
+  INDEX `planDeEntrenamiento_FKIndex2` (`persona_personaId` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`posicion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`posicion` (
+  `posicionId` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `posicionNombre` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`posicionId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`pueblo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`pueblo` (
+  `idPueblo` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `puebloNombre` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`idPueblo`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 79
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`role` (
+  `RoleId` VARCHAR(20) NOT NULL,
+  `Name` VARCHAR(20) NOT NULL,
+  `Description` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`RoleId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`roleusergood`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`roleusergood` (
+  `UserName` VARCHAR(20) NOT NULL,
+  `RoleId` VARCHAR(20) NOT NULL,
+  `dateAssign` DATE NOT NULL,
+  PRIMARY KEY (`UserName`, `RoleId`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`webpagegood`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`webpagegood` (
+  `pageURL` VARCHAR(40) NOT NULL,
+  `pageTitle` VARCHAR(40) NOT NULL,
+  `Description` MEDIUMTEXT NOT NULL,
+  `menuID` DECIMAL(10,0) NULL DEFAULT NULL,
+  PRIMARY KEY (`pageURL`),
+  INDEX `menuID` (`menuID` ASC) VISIBLE,
+  CONSTRAINT `webpagegood_ibfk_1`
+    FOREIGN KEY (`menuID`)
+    REFERENCES `proyecto2`.`menuelement` (`menuID`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`rolewebpagegood`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`rolewebpagegood` (
+  `RoleId` VARCHAR(20) NOT NULL,
+  `pageURL` VARCHAR(40) NOT NULL,
+  `dateAssign` DATE NOT NULL,
+  PRIMARY KEY (`RoleId`, `pageURL`),
+  INDEX `pageURL` (`pageURL` ASC) VISIBLE,
+  CONSTRAINT `rolewebpagegood_ibfk_1`
+    FOREIGN KEY (`pageURL`)
+    REFERENCES `proyecto2`.`webpagegood` (`pageURL`)
+    ON DELETE CASCADE,
+  CONSTRAINT `rolewebpagegood_ibfk_2`
+    FOREIGN KEY (`RoleId`)
+    REFERENCES `proyecto2`.`role` (`RoleId`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`usergood`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`usergood` (
+  `UserName` VARCHAR(20) NOT NULL,
+  `hashing` MEDIUMTEXT NOT NULL,
+  `Name` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`UserName`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`vestimenta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`vestimenta` (
+  `idVestimenta` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tipoVestimenta` INT(10) UNSIGNED NULL DEFAULT NULL,
+  `descripcionVestimenta` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`idVestimenta`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `proyecto2`.`webpageprevious`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `proyecto2`.`webpageprevious` (
+  `currentpageURL` VARCHAR(40) NOT NULL,
+  `previouspageURL` VARCHAR(40) NOT NULL,
+  PRIMARY KEY (`currentpageURL`, `previouspageURL`),
+  INDEX `previouspageURL` (`previouspageURL` ASC) VISIBLE,
+  CONSTRAINT `webpageprevious_ibfk_1`
+    FOREIGN KEY (`currentpageURL`)
+    REFERENCES `proyecto2`.`webpagegood` (`pageURL`)
+    ON DELETE CASCADE,
+  CONSTRAINT `webpageprevious_ibfk_2`
+    FOREIGN KEY (`previouspageURL`)
+    REFERENCES `proyecto2`.`webpagegood` (`pageURL`)
+    ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
